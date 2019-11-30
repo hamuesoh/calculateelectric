@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.5.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.5.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.5.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.5.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/7.5.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+
+  </head>
+  <body>
+    <div class="container">
+      <br>
+      <div class="titlename text-center">
+        <h2>คำนวนค่าไฟห้อง</h2>
+      </div>
+      <hr>
+      <div class="divDataline1 ">
+        <div class="row">
+          <div class="col-md-2">
+              <div class="form-group">
+                  <label for="nameDevice">ชื่ออุปกรณ์:</label>
+                  <input type="text" class="form-control" id="nameDevice">
+              </div>
+          </div>    
+          <div class="col-md-2">
+              <div class="form-group">
+                  <label for="watt">การกินไฟ(Watt):</label>
+                  <input type="number" class="form-control" id="watt" value="">
+              </div>
+          </div>        
+          <div class="col-md-2">
+              <div class="form-group">
+                  <label for="usingperday">ชั่วโมงการใช้(ต่อวัน):</label>
+                  <input type="number" class="form-control" id="usingperday" value="">
+              </div>
+          </div>     
+          <div class="col-md-2">
+              <div class="form-group">
+                  <label for="electricprice">ค่าไฟ(ต่อหน่วย):</label>
+                  <input type="number" class="form-control" id="electricprice" value="">
+              </div>
+          </div>          
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>หน่วยต่อวัน : </label>
+                    <label class="" id="showUnitPerDay"></label>
+                </div>
+            </div>    
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>หน่วยต่อเดือน : </label>
+                    <label class="" id="showUnitPerMonth"></label>
+                </div>
+            </div>       
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>ค่าไฟต่อเครื่อง: </label>
+                    <label class="" id="showResultPerDevice"></label>
+                </div>
+            </div>           
+          </div>        
+        <!-- <div class="col-md-2">
+            <div class="form-group">
+                <button type="button" onclick="DeleteRow()">ลบ</button>
+            </div>
+        </div>   -->
+      </div>
+      <hr> 
+      <div class="divResult row">
+        <div class="BTNAddRow col-md-4">
+          <button type="button" onclick="AddRow()">เพิ่ม</button>
+        </div>
+        <div class="BTNAddRow col-md-1">
+            <button type="button" onclick="ShowResult()">ตกลง</button>
+        </div>
+        <div class="col-md-4">
+          <span>55 <label class="resultPerMonth"> บาทต่อเดือน</label></span>
+                 
+        </div>
+      </div>
+    </div>
+    <script>
+      function ShowResult(){
+        var watt = document.getElementById("watt").value;
+        var usingperday = document.getElementById("usingperday").value;
+        var electricprice = document.getElementById("electricprice").value;
+
+        var resultshowUnitPerDay = (watt/1000)*usingperday;        
+        document.getElementById("showUnitPerDay").innerHTML = resultshowUnitPerDay;
+
+        var resultshowUnitPerMonth = (resultshowUnitPerDay*30);
+        document.getElementById("showUnitPerMonth").innerHTML = resultshowUnitPerMonth;
+
+        var resultshowResultPerDevice = (resultshowUnitPerMonth*electricprice);
+        document.getElementById("showResultPerDevice").innerHTML = resultshowResultPerDevice;
+      }
+      
+      function AddRow(){
+
+      }
+      
+      function DeleteRow(){
+        
+      }
+    </script>
+  </body>
+</html>
