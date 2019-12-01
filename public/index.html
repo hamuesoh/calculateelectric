@@ -120,20 +120,22 @@
         var divRow = document.createElement("div");
         divRow.classList.add("divDataline" + G_divDatalineCount);
         document.getElementsByClassName("divData")[0].appendChild(divRow);
-        G_divDatalineCount++;
+        
 
-        AddElementDivForm();
+        AddElementDivForm(0,"nameDevice","ชื่ออุปกรณ์:");
+        AddElementDivForm(1,"watt","การกินไฟ(Watt):");
+        G_divDatalineCount++;
 
       }
 
-      function AddElementDivForm(){
+      function AddElementDivForm(countColumn,inputId, lblText){
         var labelFormData = document.createElement("label");
-        labelFormData.setAttribute("for", "nameDevice");        
-        labelFormData.appendChild(document.createTextNode("ชื่ออุปกรณ์:"));
+        labelFormData.setAttribute("for", inputId);        
+        labelFormData.appendChild(document.createTextNode(lblText));
         var inputFormData = document.createElement("input");
         inputFormData.setAttribute("type", "text");
         inputFormData.setAttribute("class", "form-control");
-        inputFormData.setAttribute("id", "nameDevice");
+        inputFormData.setAttribute("id", inputId);
         
         var divFormGroup = document.createElement("div");
         divFormGroup.classList.add("form-group");
@@ -144,7 +146,7 @@
         divForm.classList.add("col-md-2");
         divForm.appendChild(divFormGroup)[0];
 
-        document.getElementsByClassName("divDataline1")[0].appendChild(divForm);    
+        document.getElementsByClassName("divDataline" + G_divDatalineCount)[countColumn].appendChild(divForm);    
       }
 
       function ShowResult(){
