@@ -131,12 +131,12 @@
 
       function AddElementDivForm(inputId, lblText){
         var labelFormData = document.createElement("label");
-        labelFormData.setAttribute("for", inputId);        
+        labelFormData.setAttribute("for", inputId+G_divDatalineCount);        
         labelFormData.appendChild(document.createTextNode(lblText));
         var inputFormData = document.createElement("input");
         inputFormData.setAttribute("type", "text");
         inputFormData.setAttribute("class", "form-control");
-        inputFormData.setAttribute("id", inputId);
+        inputFormData.setAttribute("id", inputId+G_divDatalineCount);
         
         var divFormGroup = document.createElement("div");
         divFormGroup.classList.add("form-group");
